@@ -30,5 +30,6 @@ export default {
     justify-content : space-around;
     margin-left : 30px;
     margin-right : 30px;
+    height : 8vh;
 }
 </style>

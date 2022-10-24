@@ -5,14 +5,43 @@
         rel="stylesheet"
         />
         <NavBar />
-        <p>Hello World : map</p> 
+        <l-map style="height: 92vh" :zoom="zoom" :center="center">
+            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+            <l-marker :lat-lng="markerVannes"></l-marker>
+            <l-marker :lat-lng="markerEvry"></l-marker>
+        </l-map>
     </div>
   </template>
   
-  <script lang="ts">
-  import Vue from 'vue'
-  
-  export default Vue.extend({
-   
-  })
-  </script>
+<script lang="ts">
+    import Vue from 'vue'
+    import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+
+    Vue.component('l-map', LMap);
+    Vue.component('l-tile-layer', LTileLayer);
+    Vue.component('l-marker', LMarker);
+
+    export default Vue.extend({
+        components: {
+            LMap,
+            LTileLayer,
+            LMarker
+        },
+        data () {
+            return {
+            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            attribution:
+                '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            zoom: 15,
+            center: [47.658, -2.760],
+            markerVannes: [47.658, -2.760],
+            markerEvry : [48.266,3.250]
+            };
+        }
+    })
+</script>
+
+<style>
+@import "leaflet/dist/leaflet.css"
+
+</style>
