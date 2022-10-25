@@ -16,6 +16,18 @@
 <script lang="ts">
     import Vue from 'vue'
     import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+    import { Icon } from 'leaflet';
+    
+    type D = Icon.Default & {
+        _getIconUrl?: string;
+    };
+
+    delete (Icon.Default.prototype as D)._getIconUrl;
+    Icon.Default.mergeOptions({
+        iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+        iconUrl: require('leaflet/dist/images/marker-icon.png'),
+        shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+    });
 
     Vue.component('l-map', LMap);
     Vue.component('l-tile-layer', LTileLayer);
@@ -29,19 +41,18 @@
         },
         data () {
             return {
-            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            attribution:
-                '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            zoom: 15,
-            center: [47.658, -2.760],
-            markerVannes: [47.658, -2.760],
-            markerEvry : [48.266,3.250]
+                url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                attribution:
+                    '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+                zoom: 15,
+                center: [47.658, -2.760],
+                markerVannes: [47.658, -2.760],
+                markerEvry : [48.266,3.250]
             };
         }
     })
 </script>
 
 <style>
-@import "leaflet/dist/leaflet.css"
-
+    @import "leaflet/dist/leaflet.css";
 </style>
