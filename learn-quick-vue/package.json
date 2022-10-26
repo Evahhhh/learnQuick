@@ -20,6 +20,7 @@
     "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
+    "@d1ci/vue-audio-player-updated": "^1.0.1",
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.25.3",
     "leaflet": "^1.9.2",
