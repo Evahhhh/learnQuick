@@ -20,7 +20,10 @@ export default {
 @import 'https://fonts.googleapis.com/css2?family=Hubballi&display=swap';
 
 .navbar{
-    background-color: #E1CFFF;
+    background-color: white;
+    box-shadow: #D1D1D1 0 48px 100px 0;
+    position : relative;
+    z-index : 10;
 }
 
 .navbar-content{

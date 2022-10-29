@@ -1,19 +1,13 @@
 <template>
-    <div class="content-card">
+    <div class="content-card-audio">
         <p>Audio</p>
         <div class='audio-player'>
-            <!-- <AudioPlayer 
-            :option="{
-                src: './f1-piano.mp3',
-                // src: 'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_100KB_MP3.mp3',
-                title: 'Piano F1',
-                coverImage: '/f1-piano-cover.png',
-            }" />  -->
-             <AudioPlayer
-                    ref="audioPlayer"
+            {{ currentAudioName || audioList[0].name }}
+            <AudioPlayer
+            ref="audioPlayer"
                     :audio-list="audioList.map(elm => elm.url)"
                     :before-play="handleBeforePlay"
-                    theme-color="#ff2929"
+                    theme-color="#3A0082"
                 />
         </div>
     </div>
@@ -29,24 +23,53 @@ export default {
         AudioPlayer,
     },
     data() {
-    return {
-      currentAudioName: '',
-      audioList: [
-        {
-          name: 'Piano F1',
-          url: './f1-piano.mp3'
+        return {
+            currentAudioName: '',
+            audioList: [
+                {
+                    name: 'Formula 1 Theme Piano Arrangement',
+                    url: './f1-piano.mp3'
+                },
+                {
+                    name: 'Avicii - Addicted To You',
+                    url: './Avicii - Addicted To You.mp3'
+                },
+                {
+                    name : 'Muse - Hysteria',
+                    url : './Muse - Hysteria.mp3'
+                },
+                {
+                    name : 'Linkin Park - In The End',
+                    url : './Linkin Park - In The End.mp3'
+                }
+            ]
         }
-      ]
+    },
+    methods: {
+        // Something to do before playing
+        handleBeforePlay(next) {
+        // There are a few things you can do here...
+        this.currentAudioName = this.audioList[this.$refs.audioPlayer.currentPlayIndex].name
+        
+        next() // Start playing
+        }
     }
 }
-}
+
 </script>
 
 <style>
-.content-card{
+.content-card-audio{
     background : white;
-    text-align : center;
+    text-align  : center;
     margin-top : 30px;
+}
+
+.audio-player{
+    font-size : 18px;
+    margin-top : 30px;
+    margin-left : 10px;
+    margin-right : 10px;
 }
 
 </style>
