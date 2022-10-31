@@ -5,14 +5,36 @@
         rel="stylesheet"
         />
         <NavBar />
-        <p>Hello World : tasks</p> 
+        <div class = todo-section>
+            <div class = tasks-card>
+                <TasksToDo />
+            </div>
+        </div>
     </div>
-  </template>
+</template>
   
-  <script lang="ts">
-  import Vue from 'vue'
-  
-  export default Vue.extend({
-   
-  })
-  </script>
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+
+})
+</script>
+
+<style>
+.todo-section {
+    height: 92vh;
+    background-color: #F7F2FF;
+}
+
+.tasks-card {
+    height : 74vh;
+    width: 90%;
+    border-radius : 10px;
+    background : white;
+    box-shadow: #DBCBCB 0 8px 24px;
+    margin-left : 5%;
+    margin-right : 5%;
+    padding:20px;
+}
+</style>
